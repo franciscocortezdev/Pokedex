@@ -1,13 +1,19 @@
-
-
-export async function getAllPokemon() {
-
-  try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=5&offset=0`);
-    const data = await response.json();
-
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+const responsePoke = apiResponse => {
+  
+  return apiResponse.results.map(pokemon => {
+    return fetch(pokemon.url)
+      .then(response => response.json())
+      .then(pokemon => pokemon)
+  })
 }
+
+
+export function getAllPokemon(offset = 0) {
+
+
+    return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=5&offset=0`)
+    .then(response => response.json()) 
+    .then(data =>  responsePoke(data))
+
+  }
+
