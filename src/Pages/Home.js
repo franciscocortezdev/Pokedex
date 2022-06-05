@@ -1,22 +1,25 @@
-import { useState, useEffect } from "react";
-import { getAllPokemon } from "../Service/getPokemon"
+import React, { useState, useEffect } from 'react'
+import { getAllPokemon } from '../Service/getPokemon'
 
-export  function Home() {
-  const [listPoke, setlistPoke] = useState([]);
+export function Home () {
+  const [listPoke, setlistPoke] = useState([])
 
   useEffect(() => {
-    getAllPokemon().then(data => Promise.all(data).then(setlistPoke));
-    
-  
-  }, []);
+    getAllPokemon().then(data => Promise.all(data).then(setlistPoke))
+  }, [])
 
- 
-
-console.log(listPoke);
- 
- 
+  if (listPoke.length === 0) {
+    return <div>Loading...</div>
+  }
 
   return (
-    <div>Home</div>
+    <>
+    <div>Lista de Pokemons</div>
+
+    {
+      listPoke.map(pokemon => (<li key={pokemon.name}>{pokemon.name}</li>))
+    }
+
+    </>
   )
 }
