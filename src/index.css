@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root{
+  --blue: #3b5ba6;
+  --darkBlue: #1e386b;
+  --yellow: #ffcb05;
+  --red: #cb2c29;
+
+}
+
+
+body{
+  font-family: 'Carter One', cursive;
+  background-color: var(--blue)
+}
