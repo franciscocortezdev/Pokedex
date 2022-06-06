@@ -5,10 +5,12 @@ import './Home.css'
 
 export function Home () {
   const [listPoke, setlistPoke] = useState([])
+  const [offset, setOffset] = useState(0)
+  // const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    getAllPokemon().then(data => Promise.all(data).then(setlistPoke))
-  }, [])
+    getAllPokemon(offset).then(data => Promise.all(data).then(setlistPoke))
+  }, [offset])
 
   if (listPoke.length === 0) {
     return <div>Loading...</div>
@@ -24,6 +26,8 @@ export function Home () {
       ))
     }
     </div>
+    <button onClick={() => { setOffset(offset => offset + 5) }}>More Pokemon</button>
+
     </>
   )
 }
