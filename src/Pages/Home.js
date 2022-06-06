@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getAllPokemon } from '../Service/getPokemon'
+import { CardPokemon } from '../Components/CardPokemon'
+import './Home.css'
 
 export function Home () {
   const [listPoke, setlistPoke] = useState([])
@@ -15,11 +17,13 @@ export function Home () {
   return (
     <>
     <div>Lista de Pokemons</div>
-
+    <div className='ListPokemon'>
     {
-      listPoke.map(pokemon => (<li key={pokemon.name}>{pokemon.name}</li>))
+      listPoke.map(pokemon => (
+        <CardPokemon key={pokemon.id} Name={pokemon.name} Image={pokemon.sprites.other.dream_world.front_default}/>
+      ))
     }
-
+    </div>
     </>
   )
 }
