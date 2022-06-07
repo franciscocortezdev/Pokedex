@@ -11,3 +11,9 @@ export function getAllPokemon (offset = 0) {
     .then(response => response.json())
     .then(data => responsePoke(data))
 }
+
+export function getPokemon (PokeName) {
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${PokeName}/`)
+    .then(response => response.json())
+    .then(data => data)
+}
