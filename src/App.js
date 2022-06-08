@@ -10,7 +10,7 @@ export default function App () {
     <Header/>
     <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/:id" element={<Details />} />
+    <Route path="/pokemon/:id" element={<Details />} />
     </Routes>
 
     </>
