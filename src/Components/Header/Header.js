@@ -5,7 +5,8 @@ export function Header () {
   const [searchPoke, setSearchPoke] = useState()
   const navigate = useNavigate()
   const handleChange = (e) => {
-    setSearchPoke(e.target.value)
+    const value = e.target.value
+    setSearchPoke(value.toLowerCase())
   }
   const handleSubmit = (e) => {
     e.preventDefault()
