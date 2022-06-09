@@ -15,7 +15,7 @@ export function Details () {
       setPokemon(data)
       setLoading(false)
       setError(false)
-    }).catch(setError(true))
+    }).catch(() => setError(true))
   }, [id])
 
   if (error) {

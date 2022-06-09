@@ -13,9 +13,9 @@ export function DetailsPokemon ({ pokemon }) {
     <div className='DetailsPokemon'>
 
       <h1 className='DetailsPokemonName'>{pokemon.name}</h1>
-      <img className='DetailsImage' src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
+      <img className='DetailsImage' src={pokemon.sprites.other.dream_world.front_default ?? pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
       <p>Peso: {(pokemon.weight / 10).toString().replace('.', ',')} Kg</p>
-      <p>Altura: {pokemon.height}</p>
+      <p>Altura: {(pokemon.height / 10).toString().replace('.', ',')} M</p>
       <p>Tipo: {pokemon.types.map(type => type.type.name).join(', ')}</p>
       <p>Habilidades: {pokemon.abilities.map(ability => ability.ability.name).join(', ')}</p>
 
