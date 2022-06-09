@@ -7,14 +7,20 @@ export function Details () {
   const { id } = useParams()
   const [pokemon, setPokemon] = useState({})
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     setLoading(true)
     getPokemon(id).then(data => {
       setPokemon(data)
       setLoading(false)
-    })
+      setError(false)
+    }).catch(setError(true))
   }, [id])
+
+  if (error) {
+    return <h1>Pokemon Not Found</h1>
+  }
 
   return (
     <>

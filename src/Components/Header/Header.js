@@ -9,6 +9,7 @@ export function Header () {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+    setSearchPoke('')
     navigate(`/pokemon/${searchPoke}`)
   }
 
@@ -16,7 +17,7 @@ export function Header () {
     <nav className='Header'>
       <h1 className='HeaderTitle'>Pokedex</h1>
       <form onSubmit={handleSubmit} className='HeaderSearchContainer'>
-        <input onChange={handleChange} type='text' placeholder='Type pokemon name' className='Search'/>
+        <input onChange={handleChange} type='text' placeholder='Type pokemon name' className='Search' value={searchPoke}/>
         <button className='btnSearch'>Search</button>
       </form>
     </nav>
