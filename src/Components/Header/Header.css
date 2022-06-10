@@ -9,6 +9,13 @@
 
 .HeaderTitle{
   font-size: 40px;
+  user-select: none;
+}
+.HeaderTitle:hover{
+  transform: scale(1.1);
+}
+.HeaderTitle:active{
+  transform: scale(1);
 }
 
 .HeaderSearchContainer{

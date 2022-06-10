@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import './Header.css'
 import { useNavigate } from 'react-router-dom'
+
 export function Header () {
+  const handleBack = () => {
+    navigate('/')
+  }
+
   const [searchPoke, setSearchPoke] = useState()
   const navigate = useNavigate()
   const handleChange = (e) => {
@@ -16,7 +21,7 @@ export function Header () {
 
   return (
     <nav className='Header'>
-      <h1 className='HeaderTitle'>Pokedex</h1>
+      <h1 onClick={handleBack} className='HeaderTitle'>Pokedex</h1>
       <form onSubmit={handleSubmit} className='HeaderSearchContainer'>
         <input onChange={handleChange} type='text' placeholder='Type pokemon name' className='Search' value={searchPoke}/>
         <button className='btnSearch'>Search</button>
