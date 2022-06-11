@@ -7,12 +7,32 @@ import './Home.css'
 export function Home () {
   const [listPoke, setlistPoke] = useState([])
   const [offset, setOffset] = useState(0)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     getAllPokemon(offset).then(data => Promise.all(data).then(dat => {
       setlistPoke(prevPoke => [...prevPoke, ...dat])
+      setLoading(false)
     }))
   }, [offset])
+
+  const newPokemons = (entries, observer) => {
+    if (entries[0].isIntersecting) {
+      setOffset(prevOffset => prevOffset + 8)
+    }
+  }
+
+  if (!loading) {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0
+    }
+    const target = document.getElementById('observer')
+    const observer = new IntersectionObserver(newPokemons, options)
+    observer.observe(target)
+  }
 
   return (
     <>
@@ -22,11 +42,14 @@ export function Home () {
       listPoke.length === 0
         ? <h1>Cargando...</h1>
         : listPoke.map(pokemon => (
-        <CardPokemon key={pokemon.id} Name={pokemon.name} Image={pokemon.sprites.other.dream_world.front_default}/>
+        <CardPokemon key={pokemon.id} Name={pokemon.name} Image={pokemon.sprites.other.dream_world.front_default ?? pokemon.sprites.other['official-artwork'].front_default}/>
+
         ))
     }
+
     </div>
-    <button onClick={() => { setOffset(offset => offset + 5) }}>More Pokemon</button>
+
+    <div id='observer'></div>
 
     </>
   )
