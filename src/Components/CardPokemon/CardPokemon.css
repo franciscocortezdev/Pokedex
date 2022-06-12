@@ -9,12 +9,13 @@
   align-items: center;
   justify-content: center;
   width: 325px;
-  height: 325px;
+  
 }
 .CardName{
   font-size: 30px;
   font-weight: bold;
   color: var(--darkBlue);
+  text-align: center;
 }
 .CardImage{
   width: 75%;
