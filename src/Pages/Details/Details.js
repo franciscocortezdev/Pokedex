@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getPokemon } from '../../Service/getPokemon'
 import { DetailsPokemon } from '../../Components/DetailsPokemon/DetailsPokemon'
+import { PokemonNFound } from '../NotFound/NotFound'
 
 export function Details () {
   const { id } = useParams()
@@ -19,7 +20,7 @@ export function Details () {
   }, [id])
 
   if (error) {
-    return <h1>Pokemon Not Found</h1>
+    return <PokemonNFound/>
   }
 
   return (
