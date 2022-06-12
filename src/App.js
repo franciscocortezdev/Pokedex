@@ -8,7 +8,7 @@ import { Page404 } from './Pages/Page404/Page404'
 
 export default function App () {
   return (
-    <>
+    <div className='appContainer'>
     <Header/>
     <Routes>
     <Route path="/" element={<Home />} />
@@ -16,7 +16,7 @@ export default function App () {
     <Route path="*" element={<Page404/>} />
     </Routes>
 
-    </>
+    </div>
 
   )
 }

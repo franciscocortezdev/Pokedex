@@ -1,5 +1,5 @@
 .CardPokemon{
-  background: #ddd;
+  background: var(--gray);
   border-radius: 10px;
   padding: 20px;
   margin: 20px;

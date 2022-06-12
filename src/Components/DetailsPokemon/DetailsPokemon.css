@@ -1,5 +1,5 @@
 .DetailsPokemon{
-  background-color: #ddd;
+  background-color: var(--gray);
   border-radius: 10px;
   margin: 10px 20px;
   padding: 20px;
@@ -61,7 +61,7 @@
   background-color: var(--blue);
   padding: 4px 10px;
   border-radius: 5px;
-  color: #ddd;
+  color: var(--gray);
   text-align: center;
 }
 

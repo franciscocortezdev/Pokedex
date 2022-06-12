@@ -8,7 +8,7 @@
 :root{
   --blue: #3b5ba6;
   --darkBlue: #1e386b;
-  --yellow: #ffcb05;
+  --gray: #ddd;
   --red: #cb2c29;
 
 }
@@ -16,5 +16,8 @@
 
 body{
   font-family: 'Carter One', cursive;
-  background-color: var(--blue)
+  background-color: var(--blue);
+  
 }
+
+
