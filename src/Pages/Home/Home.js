@@ -26,7 +26,7 @@ export function Home () {
   if (!loading) {
     const options = {
       root: null,
-      rootMargin: '0px',
+      rootMargin: '5px',
       threshold: 0
     }
     const target = document.getElementById('observer')
