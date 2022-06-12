@@ -52,7 +52,7 @@ export function Home () {
     <div className='ListPokemon'>
     {
       listPoke.length === 0
-        ? <h1>Cargando...</h1>
+        ? <h1>Loading...</h1>
         : listPoke.map(pokemon => (
         <CardPokemon key={pokemon.id} Name={pokemon.name} Image={pokemon.sprites.other.dream_world.front_default ?? pokemon.sprites.other['official-artwork'].front_default}/>
 

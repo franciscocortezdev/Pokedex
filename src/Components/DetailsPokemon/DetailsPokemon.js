@@ -12,18 +12,18 @@ export function DetailsPokemon ({ pokemon }) {
 
       <div className='body'>
 
-      <p>Peso: {(pokemon.weight / 10).toString().replace('.', ',')} Kg</p>
-      <p>Altura: {(pokemon.height / 10).toString().replace('.', ',')} M</p>
+      <p>Weight: {(pokemon.weight / 10).toString().replace('.', ',')} Kg</p>
+      <p>Height: {(pokemon.height / 10).toString().replace('.', ',')} M</p>
 
       <div className='typesContainer'>
-      <p>Tipo: </p>
+      <p>Type: </p>
       <div className='types'>
       {pokemon.types.map(type => <p key={type.type.name}>{type.type.name}</p>)}
       </div>
       </div>
 
       <div className='abilitiesContainer'>
-      <p>Habilidades: </p>
+      <p>Abilities: </p>
       <div className='abilities'>
       {pokemon.abilities.map(ability => <p key={ability.ability.name}>{ability.ability.name}</p>)}
       </div>
@@ -31,7 +31,7 @@ export function DetailsPokemon ({ pokemon }) {
 
       </div>
       <div className='stadisticsContainer'>
-      <p>Estadisticas:</p>
+      <p>Stats:</p>
       <div className='stadistics'>
       {pokemon.stats.map(stat => <p key={stat.stat.name}> {stat.stat.name + ': ' + stat.base_stat }</p>
       )}

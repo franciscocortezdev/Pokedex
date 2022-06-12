@@ -27,7 +27,7 @@ export function Details () {
     <>
     {
     loading
-      ? <h1>Cargando...</h1>
+      ? <h1>Loading...</h1>
       : <DetailsPokemon pokemon={pokemon}/>
     }
 
