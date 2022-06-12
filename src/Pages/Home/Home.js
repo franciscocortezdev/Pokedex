@@ -8,6 +8,7 @@ export function Home () {
   const [listPoke, setlistPoke] = useState([])
   const [offset, setOffset] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [btnUp, setBtnUp] = useState(false)
 
   useEffect(() => {
     setLoading(true)
@@ -34,6 +35,17 @@ export function Home () {
     observer.observe(target)
   }
 
+  const handleUP = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+  window.onscroll = () => {
+    if (window.scrollY > 100) {
+      setBtnUp(true)
+    }
+    if (window.scrollY < 100) {
+      setBtnUp(false)
+    }
+  }
   return (
     <>
 
@@ -48,6 +60,8 @@ export function Home () {
     }
 
     </div>
+
+    <button onClick={handleUP} className={ btnUp ? 'btnUpShow btnStart' : 'btnStart'}><i className="iconUP fa-solid fa-angle-up"></i></button>
 
     <div id='observer'></div>
 
