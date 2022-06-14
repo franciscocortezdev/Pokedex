@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { getAllPokemon } from '../../Service/getPokemon'
 import { CardPokemon } from '../../Components/CardPokemon/CardPokemon'
 import './Home.css'
@@ -9,6 +9,7 @@ export function Home () {
   const [offset, setOffset] = useState(0)
   const [loading, setLoading] = useState(true)
   const [visible, setVisible] = useState(false)
+  const elObserver = useRef()
 
   useEffect(() => {
     setLoading(true)
@@ -19,6 +20,14 @@ export function Home () {
   }, [offset])
 
   useEffect(() => {
+    console.log(loading)
+
+    const observer = new IntersectionObserver(newPokemons, {
+      root: null,
+      rootMargin: '5px',
+      threshold: 0.5
+    })
+    observer.observe(elObserver.current)
     if (visible) {
       setOffset(prevOffset => prevOffset + 8)
     }
@@ -26,17 +35,6 @@ export function Home () {
 
   const newPokemons = (entries) => {
     setVisible(entries[0].isIntersecting)
-  }
-
-  if (!loading) {
-    const options = {
-      root: null,
-      rootMargin: '5px',
-      threshold: 0.5
-    }
-    const target = document.getElementById('observer')
-    const observer = new IntersectionObserver(newPokemons, options)
-    observer.observe(target)
   }
 
   return (
@@ -56,7 +54,7 @@ export function Home () {
 
     <BtnUpPage/>
 
-    <div id='observer'></div>
+    <div ref={elObserver}></div>
 
     </>
   )

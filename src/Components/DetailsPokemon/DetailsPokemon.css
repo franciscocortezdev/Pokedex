@@ -1,7 +1,7 @@
 .DetailsPokemon{
   background-color: var(--gray);
   border-radius: 10px;
-  margin: 10px 20px;
+  margin: 20px 20px;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
