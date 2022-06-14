@@ -8,6 +8,7 @@ export function Home () {
   const [listPoke, setlistPoke] = useState([])
   const [offset, setOffset] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     setLoading(true)
@@ -17,17 +18,21 @@ export function Home () {
     }))
   }, [offset])
 
-  const newPokemons = (entries, observer) => {
-    if (entries[0].isIntersecting) {
+  useEffect(() => {
+    if (visible) {
       setOffset(prevOffset => prevOffset + 8)
     }
+  }, [visible])
+
+  const newPokemons = (entries) => {
+    setVisible(entries[0].isIntersecting)
   }
 
   if (!loading) {
     const options = {
       root: null,
       rootMargin: '5px',
-      threshold: 0
+      threshold: 0.5
     }
     const target = document.getElementById('observer')
     const observer = new IntersectionObserver(newPokemons, options)
