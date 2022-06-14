@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getPokemon } from '../../Service/getPokemon'
 import { DetailsPokemon } from '../../Components/DetailsPokemon/DetailsPokemon'
 import { PokemonNFound } from '../NotFound/NotFound'
+import { Spinner } from '../../Components/Spinner/Spinner'
 
 export function Details () {
   const { id } = useParams()
@@ -27,7 +28,7 @@ export function Details () {
     <>
     {
     loading
-      ? <h1>Loading...</h1>
+      ? <Spinner/>
       : <DetailsPokemon pokemon={pokemon}/>
     }
 

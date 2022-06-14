@@ -21,8 +21,6 @@ export function Home () {
   }, [offset])
 
   useEffect(() => {
-    console.log(loading)
-
     const observer = new IntersectionObserver(newPokemons, {
       root: null,
       rootMargin: '5px',
@@ -42,10 +40,10 @@ export function Home () {
     <>
 
     <div className='ListPokemon'>
-    <Spinner/>
+
     {
       listPoke.length === 0
-        ? <h1>Loading...</h1>
+        ? <Spinner/>
         : listPoke.map(pokemon => (
         <CardPokemon key={pokemon.id} Name={pokemon.name} Image={pokemon.sprites.other.dream_world.front_default ?? pokemon.sprites.other['official-artwork'].front_default}/>
 
@@ -55,6 +53,7 @@ export function Home () {
     </div>
 
     <BtnUpPage/>
+    {loading && <Spinner/>}
 
     <div ref={elObserver}></div>
 
