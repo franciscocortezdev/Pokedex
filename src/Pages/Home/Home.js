@@ -3,6 +3,7 @@ import { getAllPokemon } from '../../Service/getPokemon'
 import { CardPokemon } from '../../Components/CardPokemon/CardPokemon'
 import './Home.css'
 import { BtnUpPage } from '../../Components/BtnUpPage/BtnUpPage'
+import { Spinner } from '../../Components/Spinner/Spinner'
 
 export function Home () {
   const [listPoke, setlistPoke] = useState([])
@@ -41,6 +42,7 @@ export function Home () {
     <>
 
     <div className='ListPokemon'>
+    <Spinner/>
     {
       listPoke.length === 0
         ? <h1>Loading...</h1>
