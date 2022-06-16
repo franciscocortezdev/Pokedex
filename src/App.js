@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import { Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Home } from './Pages/Home/Home'
 import { Header } from './Components/Header/Header'
 import { Details } from './Pages/Details/Details'
@@ -10,13 +10,14 @@ export default function App () {
   return (
     <>
     <div className='appContainer'>
-    <Header/>
-    <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/pokemon/:id" element={<Details />} />
-    <Route path="*" element={<Page404/>} />
-    </Routes>
-
+      <Router>
+      <Header/>
+        <Routes>
+          <Route path="/Pokedex" element={<Home />} />
+          <Route path="/Pokedex/pokemon/:id" element={<Details />} />
+          <Route path="/Pokedex/*" element={<Page404/>} />
+        </Routes>
+      </Router>
     </div>
 
     </>

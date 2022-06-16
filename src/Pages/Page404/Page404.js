@@ -6,7 +6,7 @@ import './Page404.css'
 export function Page404 () {
   const navigate = useNavigate()
   const handleHome = () => {
-    navigate('/')
+    navigate('/Pokedex/')
   }
 
   return (

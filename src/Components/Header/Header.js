@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export function Header () {
   const handleBack = () => {
-    navigate('/')
+    navigate('/Pokedex/')
   }
 
   const [searchPoke, setSearchPoke] = useState()
@@ -16,7 +16,7 @@ export function Header () {
   const handleSubmit = (e) => {
     e.preventDefault()
     setSearchPoke('')
-    navigate(`/pokemon/${searchPoke}`)
+    navigate(`/Pokedex/pokemon/${searchPoke}`)
   }
 
   return (

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 export function CardPokemon ({ Name, Image }) {
   const navigate = useNavigate()
   const handlePokemon = () => {
-    navigate(`/pokemon/${Name}`)
+    navigate(`/Pokedex/pokemon/${Name}`)
   }
 
   return (
