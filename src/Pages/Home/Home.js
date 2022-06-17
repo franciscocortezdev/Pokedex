@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { getAllPokemon } from '../../Service/getPokemon'
+import React, { useEffect } from 'react'
 import { CardPokemon } from '../../Components/CardPokemon/CardPokemon'
 import './Home.css'
 import { BtnUpPage } from '../../Components/BtnUpPage/BtnUpPage'
 import { Spinner } from '../../Components/Spinner/Spinner'
 import { useObserver } from '../../Hooks/useObserver'
+import { usePokeList } from '../../Hooks/usePokeList'
 
 export function Home () {
-  const [listPoke, setlistPoke] = useState([])
-  const [offset, setOffset] = useState(0)
-  const [loading, setLoading] = useState(true)
   const [observed, elementRef] = useObserver()
-
-  useEffect(() => {
-    setLoading(true)
-    getAllPokemon(offset).then(data => Promise.all(data).then(dat => {
-      setlistPoke(prevPoke => [...prevPoke, ...dat])
-      setLoading(false)
-    }))
-  }, [offset])
+  const [listPoke, loading, setOffset] = usePokeList()
 
   useEffect(() => {
     if (observed) {
@@ -35,8 +25,10 @@ export function Home () {
       listPoke.length === 0
         ? <Spinner/>
         : listPoke.map(pokemon => (
-        <CardPokemon key={pokemon.id} Name={pokemon.name} Image={pokemon.sprites.other.dream_world.front_default ?? pokemon.sprites.other['official-artwork'].front_default}/>
-
+        <CardPokemon
+        key={pokemon.id}
+        Name={pokemon.name}
+        Image={pokemon.sprites.other.dream_world.front_default ?? pokemon.sprites.other['official-artwork'].front_default}/>
         ))
     }
 
