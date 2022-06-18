@@ -10,9 +10,12 @@ export function CardPokemon ({ Name, Image }) {
 
   return (
 
-    <div onClick={handlePokemon} className='CardPokemon'>
+    <div className='CardPokemon'>
       <p className='CardName'>{Name}</p>
       <img className='CardImage' src={Image} alt={Name} />
+
+      <button onClick={handlePokemon} className='btnDetails'>View Details</button>
     </div>
+
   )
 }

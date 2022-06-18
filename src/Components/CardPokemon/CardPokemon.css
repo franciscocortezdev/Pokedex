@@ -9,7 +9,15 @@
   align-items: center;
   justify-content: center;
   width: 325px;
-  
+  position: relative;
+  overflow: hidden;
+}
+.CardPokemon:hover > img,
+.CardPokemon:hover > p{
+  filter: blur(4px);
+}
+.CardPokemon:hover > button{
+  transform: translateX(0);
 }
 .CardName{
   font-size: 30px;
@@ -22,3 +30,21 @@
   height: 75%;
   
 }
+.btnDetails{
+  background: var(--blue);
+  color: var(--gray);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  transform: translateX(-300px);
+  transition: transform .3s;
+}
+.btnDetails:hover{
+  background: var(--darkBlue);
+
+}
+ 
