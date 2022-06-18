@@ -1,5 +1,23 @@
 .NotFoundContainer{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
+}
+
+.btnHome{
+ 
+  background-color: var(--gray);
+  color: var(--darkBlue);
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 10px 40px;
+}
+
+.btnHome:hover{
+ color: var(--blue);
+ box-shadow: 0 0 10px #000;
 }
