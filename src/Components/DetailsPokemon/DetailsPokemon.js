@@ -1,7 +1,12 @@
 import React from 'react'
 import './DetailsPokemon.css'
+import { useNavigate } from 'react-router-dom'
 
 export function DetailsPokemon ({ pokemon }) {
+  const navigate = useNavigate()
+  const handleHome = () => {
+    navigate('/Pokedex/')
+  }
   return (
 
     <div className='DetailsPokemon'>
@@ -37,7 +42,9 @@ export function DetailsPokemon ({ pokemon }) {
       )}
       </div>
       </div>
-
+      <div className='moveContainer'>
+      <button onClick={handleHome} className='Page404BTN'>Go to Home</button>
+      </div>
     </div>
   )
 }

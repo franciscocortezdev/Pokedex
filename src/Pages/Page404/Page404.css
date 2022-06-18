@@ -27,6 +27,7 @@
   font-weight: bold;
   color: var(--darkBlue);
   text-align: center;
+  margin-bottom: 10px;
 }
 .Page404BTN{
  
@@ -37,7 +38,7 @@
   border-radius: 10px;
   border: none;
   outline: none;
-  margin-top: 10px;
+ 
   padding: 10px 40px;
 }
 

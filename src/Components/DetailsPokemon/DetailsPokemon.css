@@ -43,6 +43,12 @@
   justify-content: center;
 
 }
+.moveContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+ 
+}
 
 .DetailsImage{
   width: 100%;
