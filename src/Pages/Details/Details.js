@@ -4,6 +4,7 @@ import { getPokemon } from '../../Service/getPokemon'
 import { DetailsPokemon } from '../../Components/DetailsPokemon/DetailsPokemon'
 import { PokemonNFound } from '../NotFound/NotFound'
 import { Spinner } from '../../Components/Spinner/Spinner'
+import { Helmet } from 'react-helmet'
 
 export function Details () {
   const { id } = useParams()
@@ -21,16 +22,34 @@ export function Details () {
   }, [id])
 
   if (error) {
-    return <PokemonNFound/>
+    return (
+      <>
+    <PokemonNFound/>
+    <Helmet>
+    <title>Pokemon Not Found | Pokedex</title>
+    </Helmet>
+    </>
+    )
+  }
+  if (loading) {
+    return (
+      <>
+    <Spinner/>
+    <Helmet>
+    <title>Loading.. | Pokedex</title>
+    </Helmet>
+    </>
+    )
   }
 
   return (
     <>
-    {
-    loading
-      ? <Spinner/>
-      : <DetailsPokemon pokemon={pokemon}/>
-    }
+    <Helmet>
+    <title>Details of {pokemon.name} | Pokedex</title>
+    <meta name="description" content={'Details of' + pokemon.name}/>
+    </Helmet>
+
+    <DetailsPokemon pokemon={pokemon}/>
 
     </>
   )

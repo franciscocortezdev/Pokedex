@@ -5,6 +5,7 @@ import { BtnUpPage } from '../../Components/BtnUpPage/BtnUpPage'
 import { Spinner } from '../../Components/Spinner/Spinner'
 import { useObserver } from '../../Hooks/useObserver'
 import { usePokeList } from '../../Hooks/usePokeList'
+import { Helmet } from 'react-helmet'
 
 export function Home () {
   const [observed, elementRef] = useObserver()
@@ -18,9 +19,11 @@ export function Home () {
 
   return (
     <>
-
+    <Helmet>
+    <title>Home | Pokedex</title>
+    <meta name="description" content="List and search for Pokemons" />
+    </Helmet>
     <div className='ListPokemon'>
-
     {
       listPoke.length === 0
         ? <Spinner/>
@@ -31,14 +34,10 @@ export function Home () {
         Image={pokemon.sprites.other.dream_world.front_default ?? pokemon.sprites.other['official-artwork'].front_default}/>
         ))
     }
-
     </div>
-
     <BtnUpPage/>
     {loading && <Spinner/>}
-
     <div ref={elementRef}></div>
-
     </>
   )
 }
