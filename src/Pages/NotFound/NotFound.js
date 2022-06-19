@@ -1,7 +1,6 @@
 import React from 'react'
 import './NotFound.css'
 import NotFound from '../../Img/NotFound.png'
-import { CardPokemon } from '../../Components/CardPokemon/CardPokemon'
 import { useNavigate } from 'react-router-dom'
 
 export function PokemonNFound () {
@@ -12,8 +11,11 @@ export function PokemonNFound () {
   return (
     <>
     <div className='NotFoundContainer'>
-    <CardPokemon Name={'Pokemon Not Found'} Image={NotFound}/>
-    <button className='btnHome' onClick={handleHome}>Go to Home</button>
+      <div className='NotFound'>
+        <p className='NotFoundTitle'>Pokemon Not Found</p>
+        <img className='NotFoundImg' src={NotFound} alt='Not Found' />
+      </div>
+      <button className='btnHome' onClick={handleHome}>Go to Home</button>
     </div>
     </>
   )
