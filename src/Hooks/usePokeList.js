@@ -4,17 +4,13 @@ import { useLocalStorage } from './useLocalStorage.js'
 
 export function usePokeList () {
   const [listPoke, setlistPoke] = useState([])
-  // const [offset, setOffset] = useState(null)
   const [loading, setLoading] = useState(true)
   // const [storedValue, setValue] = useLocalStorage('listPoke', [])
   const [offset, setOffset, isLocalStorage] = useLocalStorage('offset', 0)
 
-  console.log('there', isLocalStorage)
-  console.log('offset', offset)
   useEffect(() => {
     setLoading(true)
     const limit = 0
-
     if (isLocalStorage) {
       getAllPokemon(offset, limit).then(data => Promise.all(data).then(dat => {
         setlistPoke(prev => [...prev, ...dat])

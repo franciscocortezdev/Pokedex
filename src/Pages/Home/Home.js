@@ -35,7 +35,7 @@ export function Home () {
         ))
     }
     </div>
-    <BtnUpPage/>
+     {listPoke.length !== 0 && <BtnUpPage/> }
     {loading && <Spinner/>}
     <div ref={elementRef}></div>
     </>
