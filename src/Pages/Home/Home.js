@@ -9,11 +9,11 @@ import { Helmet } from 'react-helmet'
 
 export function Home () {
   const [observed, elementRef] = useObserver()
-  const [listPoke, loading, setOffset] = usePokeList()
+  const [listPoke, loading, setOffset, offset] = usePokeList()
 
   useEffect(() => {
     if (observed) {
-      setOffset(prevOffset => prevOffset + 8)
+      setOffset(offset + 8)
     }
   }, [observed])
 

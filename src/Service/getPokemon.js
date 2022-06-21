@@ -6,8 +6,8 @@ const responsePoke = apiResponse => {
   })
 }
 
-export function getAllPokemon (offset = 0) {
-  return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=8&offset=${offset}`)
+export function getAllPokemon (limit = 8, offset = 0) {
+  return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`)
     .then(response => response.json())
     .then(data => responsePoke(data))
 }

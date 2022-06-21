@@ -1,10 +1,16 @@
 import { useState } from 'react'
 
 export function useLocalStorage (key, initialValue) {
+  const [isLocalStorage, setIsLocalStorage] = useState()
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const item = window.localStorage.getItem(key)
-      return item ? JSON.parse(item) : initialValue
+      if (item) {
+        setIsLocalStorage(true)
+        return JSON.parse(item)
+      }
+      setIsLocalStorage(false)
+      return initialValue
     } catch (error) {
       console.log(error)
       return initialValue
@@ -15,23 +21,24 @@ export function useLocalStorage (key, initialValue) {
     console.log('value', value)
     console.log(typeof value)
     try {
-      if (typeof value === 'object') {
-        setStoredValue(prevPoke => [...prevPoke, ...value])
+      // add item to state
+
+      if (isLocalStorage) {
+        setStoredValue(value - 8)
+        setIsLocalStorage(false)
+        console.log('dentro del if')
       } else {
         setStoredValue(value)
+        setIsLocalStorage(false)
+        console.log('fuera del if')
       }
-      const item = window.localStorage.getItem(key)
-      if (item === null) {
-        window.localStorage.setItem(key, JSON.stringify(value))
-      } else {
-        const prevPokes = JSON.parse(item)
-        prevPokes.push(...value)
-        window.localStorage.setItem(key, JSON.stringify(prevPokes))
-      }
+
+      // add item to localStorage
+      window.localStorage.setItem(key, JSON.stringify(value + 8))
     } catch (error) {
       console.log(error)
     }
   }
 
-  return [storedValue, setValue]
+  return [storedValue, setValue, isLocalStorage]
 }
