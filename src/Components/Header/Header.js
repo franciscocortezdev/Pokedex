@@ -1,22 +1,28 @@
 import React, { useState } from 'react'
 import './Header.css'
 import { useNavigate } from 'react-router-dom'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
 export function Header () {
-  const handleBack = () => {
-    navigate('/Pokedex/')
-  }
+  const [, setPosition] = useLocalStorage('position', 0)
 
   const [searchPoke, setSearchPoke] = useState()
   const navigate = useNavigate()
+
   const handleChange = (e) => {
     const value = e.target.value
     setSearchPoke(value.toLowerCase())
   }
+
+  const handleBack = () => {
+    navigate('/Pokedex/')
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     setSearchPoke('')
     navigate(`/Pokedex/pokemon/${searchPoke}`)
+    setPosition(0)
   }
 
   return (

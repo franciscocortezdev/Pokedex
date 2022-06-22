@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { getAllPokemon } from '../Service/getPokemon.js'
-import { useLocalStorage, useStorageOffset } from './useLocalStorage.js'
+import { useLocalStorage } from './useLocalStorage.js'
 
 export function usePokeList () {
   const [loading, setLoading] = useState()
   const [listPoke, setlistPoke] = useLocalStorage('listPoke', [])
-  const [offset, setOffset, isLStorage] = useStorageOffset('offset', 0)
+  const [offset, setOffset, isLStorage] = useLocalStorage('offset', 0)
 
   useEffect(() => {
     if (isLStorage !== true) {

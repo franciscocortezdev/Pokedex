@@ -31,7 +31,7 @@ export function Home () {
         <CardPokemon
         key={pokemon.id}
         Name={pokemon.name}
-        Image={pokemon.sprites.other.dream_world.front_default ?? pokemon.sprites.other['official-artwork'].front_default}/>
+        Image={pokemon.picture ?? pokemon.pictureBackUp}/>
         ))
     }
     </div>

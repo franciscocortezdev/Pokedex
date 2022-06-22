@@ -2,7 +2,15 @@ const responsePoke = apiResponse => {
   return apiResponse.results.map(pokemon => {
     return fetch(pokemon.url)
       .then(response => response.json())
-      .then(pokemon => pokemon)
+      .then(pokemon => {
+        return {
+          id: pokemon.id,
+          name: pokemon.name,
+          picture: pokemon.sprites.other.dream_world.front_default,
+          pictureBackUp: pokemon.sprites.other['official-artwork'].front_default
+        }
+      }
+      )
   })
 }
 
