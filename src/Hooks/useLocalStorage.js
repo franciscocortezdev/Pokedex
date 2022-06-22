@@ -8,10 +8,10 @@ export function useLocalStorage (key, initialValue) {
 
       if (item) {
         setIsLStorage(true)
-        console.log('dentro del if')
+
         return JSON.parse(item)
       }
-      console.log('Fuera del if')
+
       setIsLStorage(false)
       return initialValue
     } catch (error) {
@@ -23,8 +23,7 @@ export function useLocalStorage (key, initialValue) {
 
   const setValue = value => {
     setIsLStorage(false)
-    console.log('value', value)
-    console.log(typeof value)
+
     try {
       // added to state
       if (typeof value === 'object') {
@@ -57,10 +56,10 @@ export function useStorageOffset (key, initialValue) {
 
       if (item) {
         setIsLStorage(true)
-        console.log('dentro del if')
+
         return JSON.parse(item)
       }
-      console.log('Fuera del if')
+
       setIsLStorage(false)
       window.localStorage.setItem(key, JSON.stringify(0))
       return initialValue
@@ -73,8 +72,7 @@ export function useStorageOffset (key, initialValue) {
 
   const setValue = value => {
     setIsLStorage(false)
-    console.log('value', value)
-    console.log(typeof value)
+
     try {
       // added to state
       if (typeof value === 'object') {
